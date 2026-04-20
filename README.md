@@ -1,84 +1,59 @@
 # manele-ocr-service
 
-A Redis-backed worker that consumes OCR jobs from a queue and runs [OCRmyPDF](https://ocrmypdf.readthedocs.io/) via Docker to produce searchable PDFs.
-
-## Overview
-
-- **Worker** (`worker.py`): Long-running process that blocks on the Redis list `ocr_jobs`. For each job it runs the `ocr-base` Docker image with ocrmypdf, reading and writing PDFs under a local `data` directory.
-- **Docker image** (`Dockerfile`): Ubuntu-based image with Tesseract (eng, hin, ara, pan, urd), OCRmyPDF, Ghostscript, ImageMagick, and related tools. Build and tag as `ocr-base` for the worker.
-
-## Requirements
-
-- Python 3 (tested with 3.14)
-- Redis server (default: localhost:6379)
-- Docker (to run the `ocr-base` container)
-- `data` directory in the project root for input/output PDFs
+Local playground for trying document OCR stacks without a web UI or HTTP API. The default Python environment is set up for [SuryaOCR](https://github.com/datalab-to/surya). [olmOCR](https://github.com/allenai/olmocr) is supported as an optional separate install.
 
 ## Setup
 
-1. **Python dependencies**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # or venv\Scripts\activate on Windows
-   pip install -r requirements.txt
-   ```
-
-2. **Redis**
-
-   Start Redis locally (e.g. `redis-server`) or use a remote instance. The worker connects to `localhost:6379` by default.
-
-3. **OCR Docker image**
-
-   Build and tag the image used by the worker:
-
-   ```bash
-   docker build -t ocr-base .
-   ```
-
-4. **Data directory**
-
-   ```bash
-   mkdir -p data
-   ```
-
-   Place input PDFs in `data/`. The worker expects job payloads to reference filenames relative to this directory (e.g. `document.pdf`).
-
-## Running the worker
+Python 3.10 or newer is required for Surya.
 
 ```bash
-source venv/bin/activate
-python worker.py
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-The worker runs until interrupted. It will log when it connects to Redis, when it receives jobs, and when OCR completes or fails.
+Install olmOCR in **another** virtual environment when you need it; its dependency stack can conflict with Surya.
 
-## Job format
-
-Push a JSON object to the Redis list `ocr_jobs`. Required field:
-
-| Field | Description |
-|-------|-------------|
-| `file` | Input PDF filename (e.g. `document.pdf`). Must exist under `data/`. |
-
-Output is written to `data/<basename>_ocr.pdf` (e.g. `document_ocr.pdf`).
-
-Example (Redis CLI):
+## Usage
 
 ```bash
-redis-cli LPUSH ocr_jobs '{"file": "document.pdf"}'
+python -m playground surya path/to/file.pdf
+python -m playground surya path/to/page.png --page-range 0-2
+python -m playground surya path/to/folder/of/images
 ```
 
-## Configuration
+Text is written to standard output. Model weights download on first Surya run (large download; let the process finish).
 
-Currently hardcoded in `worker.py`:
+### Smoke test on `data/`
 
-- **Redis**: `host='localhost'`, `port=6379`
-- **Queue**: `ocr_jobs`
-- **Data directory**: `./data` (absolute path)
-- **OCR options**: English language, page rotation, deskew, optimize level 2, 4 jobs
+With sample PDFs under `data/`, OCR only the first page of each file in one run (one model load):
 
-Adjust these in `worker.py` or refactor to env/config as needed.
+```bash
+python -m playground surya data --page-range 0
+```
+
+Do not pipe that command to `head` or similar while weights are still downloading; closing the pipe can send SIGPIPE and abort the download.
+
+### Troubleshooting
+
+If you see `ModuleNotFoundError: No module named 'requests'`, reinstall so the explicit `requests` pin from `requirements.txt` is applied (`surya-ocr` imports it but does not list it on PyPI).
+
+If you see `AttributeError: 'SuryaDecoderConfig' object has no attribute 'pad_token_id'`, you have `transformers` 5.x; this project pins `transformers<5` in `requirements.txt` for compatibility with `surya-ocr` 0.17.x. Run `pip install -r requirements.txt` again.
+
+If `olmocr` is on your `PATH` (from another env or a global install):
+
+```bash
+python -m playground olmocr path/to/file.pdf
+```
+
+## Layout
+
+| Path | Role |
+|------|------|
+| `requirements.txt` | SuryaOCR (`surya-ocr`) |
+| `playground/cli.py` | Argument parsing and dispatch |
+| `playground/engines/surya.py` | Surya detection plus recognition on images or PDF pages |
+| `playground/engines/olmocr.py` | Wraps the `olmocr` CLI with a temp workspace |
 
 ## License
 

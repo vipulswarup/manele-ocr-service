@@ -1,1 +1,18 @@
-redis>=5.0,<8
+# -----------------------------------------------------------------------------
+# SuryaOCR — https://github.com/datalab-to/surya
+# Python 3.10 or newer. PyTorch is pulled in as a dependency; on Linux without
+# a suitable wheel, install the matching CUDA/CPU torch build from PyTorch
+# before `pip install -r requirements.txt` if resolution fails.
+# -----------------------------------------------------------------------------
+surya-ocr==0.17.1
+# surya imports requests via surya.common.s3 but does not declare it on PyPI
+requests>=2.28.0,<3
+# transformers 5.x breaks surya 0.17.x (e.g. SuryaDecoderConfig.pad_token_id)
+transformers>=4.56.1,<5.0
+
+# -----------------------------------------------------------------------------
+# olmOCR — https://github.com/allenai/olmocr
+# Use a separate virtual environment: GPU stack and versions conflict with Surya.
+# Remote (lightweight): pip install olmocr
+# Local GPU: pip install olmocr[gpu] --extra-index-url https://download.pytorch.org/whl/cu128
+# -----------------------------------------------------------------------------

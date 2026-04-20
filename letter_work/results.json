@@ -1,0 +1,13 @@
+[
+  {
+    "page": 1,
+    "image": "/Users/vipulswarup/coding/manele-ocr-service/letter_work/pages/page-1.png",
+    "result": {
+      "language": "Arabic",
+      "summary_english": "The letter is a citizen complaint about the poor condition of the road in front of the house, which is causing inconvenience and damage to vehicles. The writer requests the municipality to repair the road and provide compensation for the damages.",
+      "main_complaint": "The road in front of the house is in poor condition and is causing damage to vehicles.",
+      "uncertainty_notes": "The letter is written in Arabic, and some parts of the text are not fully legible, making it challenging to provide a precise summary. The writer's name and ID are not visible in the image.",
+      "raw_response": "{\n  \"language\": \"Arabic\",\n  \"summary_english\": \"The letter is a citizen complaint about the poor condition of the road in front of the house, which is causing inconvenience and damage to vehicles. The writer requests the municipality to repair the road and provide compensation for the damages.\",\n  \"main_complaint\": \"The road in front of the house is in poor condition and is causing damage to vehicles.\",\n  \"uncertainty_notes\": \"The letter is written in Arabic, and some parts of the text are not fully legible, making it challenging to provide a precise summary. The writer's name and ID are not visible in the image.\"\n}"
+    }
+  }
+]
