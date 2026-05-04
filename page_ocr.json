@@ -1,0 +1,124 @@
+{
+  "input_dir": "/Users/vipulswarup/coding/manele-ocr-service/line_crops_grouped",
+  "detected_script": "devanagari",
+  "detected_script_display": "Devanagari",
+  "detected_language": "hi",
+  "cleaned_text": "४\nअवा मे?\nवषयभनसूयनकरयoअवटर\nपलतीसकेआधारमेनरेड्सअपेरक\nो",
+  "uncertain_line_count": 2,
+  "lines": [
+    {
+      "file": "line_00.png",
+      "best_script": "devanagari",
+      "best_text": "४",
+      "best_score": 0.5688134762644768,
+      "uncertain": false,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "४",
+          "raw_score": 0.3887517750263214,
+          "script_affinity": 1.0,
+          "combined_score": 0.5688134762644768,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    },
+    {
+      "file": "line_01.png",
+      "best_script": "devanagari",
+      "best_text": "अवा मे?",
+      "best_score": 0.7682614314556122,
+      "uncertain": false,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "अवा मे?",
+          "raw_score": 0.7059298753738403,
+          "script_affinity": 1.0,
+          "combined_score": 0.7682614314556122,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    },
+    {
+      "file": "line_02.png",
+      "best_script": "devanagari",
+      "best_text": "वषयभनसूयनकरयoअवटर",
+      "best_score": 0.7357261711008408,
+      "uncertain": false,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "वषयभनसूयनकरयoअवटर",
+          "raw_score": 0.5842080116271973,
+          "script_affinity": 0.9411764705882353,
+          "combined_score": 0.7357261711008408,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    },
+    {
+      "file": "line_03.png",
+      "best_script": "devanagari",
+      "best_text": "",
+      "best_score": 0.0,
+      "uncertain": true,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "",
+          "raw_score": 0.0,
+          "script_affinity": 0.0,
+          "combined_score": 0.0,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    },
+    {
+      "file": "line_04.png",
+      "best_script": "devanagari",
+      "best_text": "पलतीसकेआधारमेनरेड्सअपेरक",
+      "best_score": 0.81402587890625,
+      "uncertain": false,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "पलतीसकेआधारमेनरेड्सअपेरक",
+          "raw_score": 0.661865234375,
+          "script_affinity": 1.0,
+          "combined_score": 0.81402587890625,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    },
+    {
+      "file": "line_05.png",
+      "best_script": "devanagari",
+      "best_text": "ो",
+      "best_score": 0.5142805817723274,
+      "uncertain": true,
+      "candidates": [
+        {
+          "route": "devanagari",
+          "backend": "paddle",
+          "text": "ो",
+          "raw_score": 0.28960105776786804,
+          "script_affinity": 1.0,
+          "combined_score": 0.5142805817723274,
+          "model_name": "devanagari_PP-OCRv3_mobile_rec",
+          "model_dir": null
+        }
+      ]
+    }
+  ]
+}

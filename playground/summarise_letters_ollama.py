@@ -116,7 +116,7 @@ def ask_ollama(model: str, image_path: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Summarise scanned complaint letters using Ollama")
     parser.add_argument("pdf", type=Path, help="Input PDF file")
-    parser.add_argument("--model", default="qwen2.5vl:7b", help="Ollama model name")
+    parser.add_argument("--model", default="minicpm-v:8b", help="Ollama model name")
     parser.add_argument("--workdir", type=Path, default=Path("letter_work"), help="Working directory")
     args = parser.parse_args()
 

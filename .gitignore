@@ -25,9 +25,22 @@ wheels/
 .installed.cfg
 *.egg
 
-# Local data and outputs (optional: ignore PDFs, keep dir)
-data/*.pdf
-data/*_ocr.pdf
+# Sample data & OCR outputs
+data/
+!data/.gitkeep
+
+# Interim/generated images
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.tif
+*.tiff
+line_crops/
+letter_work/
+
+# Local experimental venvs
+.venv-trocr/
 
 # Environment and secrets
 .env
@@ -48,3 +61,7 @@ Thumbs.db
 tmp/
 temp/
 .cache/
+
+letter_work/*
+line_crops/pages/*
+letter_work/pages/*

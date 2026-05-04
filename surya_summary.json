@@ -1,0 +1,13 @@
+{
+  "input_path": "/Users/vipulswarup/coding/manele-ocr-service/letter_work/pages/page-1.png",
+  "ocr_engine": "surya",
+  "language_or_script": "Devanagari",
+  "ocr_text": "भैवा मे १-\nविषय : > अहीं के सूचित करय छि अहीं हमर\nहियाँ।\n190\n*\n.\n* .\n(9)\n*\n\na a\n78\n4\n9\n-\n.\n.\n1",
+  "summary": {
+    "language_or_script": "Devanagari",
+    "summary_english": "The text appears to be incomplete and contains noise, such as multiple asterisks (*) and numbers without context.",
+    "main_complaint": "No clear complaint can be identified due to the noisy and incomplete nature of the text.",
+    "uncertainty_notes": "Text is noisy with multiple asterisks and numbers that do not form a coherent sentence or complaint.",
+    "raw_response": "{\n  \"language_or_script\": \"Devanagari\",\n  \"summary_english\": \"The text appears to be incomplete and contains noise, such as multiple asterisks (*) and numbers without context.\",\n  \"main_complaint\": \"No clear complaint can be identified due to the noisy and incomplete nature of the text.\",\n  \"uncertainty_notes\": \"Text is noisy with multiple asterisks and numbers that do not form a coherent sentence or complaint.\"\n}"
+  }
+}
